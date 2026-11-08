@@ -261,7 +261,8 @@
   show raw: styles.raw
 
   set page(
-    header: context block(
+    numbering: "1 of 1",
+    header: block(
       width: 100%,
       inset: (bottom: 0.5em),
       stroke: (bottom: 1pt + black),
@@ -272,17 +273,13 @@
           {
             author
             linebreak()
-            course
-            " "
-            sym.dot
-            " "
-            instructor
+            date
           },
           if counter(page).get().first() == 1 { (styles.title)(title) } else [],
           {
-            counter(page).display("1 of 1", both: true)
+            instructor
             linebreak()
-            date
+            course
           },
         ))
       },
