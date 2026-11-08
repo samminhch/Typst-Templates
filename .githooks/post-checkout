@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Git hook to automatically create the Typst version folder / symlink
+
+# Ensure we're in the repository root and typst.toml exists
+if [ ! -f "typst.toml" ]; then
+  exit 0
+fi
+
+# Extract name and version from typst.toml
+version=$(sed -n 's/^[[:space:]]*version[[:space:]]*=[[:space:]]*"\(.*\)"/\1/p' typst.toml | tr -d '[:space:]')
+name=$(sed -n 's/^[[:space:]]*name[[:space:]]*=[[:space:]]*"\(.*\)"/\1/p' typst.toml | tr -d '[:space:]')
+
+if [ -z "$version" ] || [ -z "$name" ]; then
+  exit 0
+fi
+
+current_dir_name=$(basename "$PWD")
+parent_dir_name=$(basename "$(dirname "$PWD")")
+
+if [ "$parent_dir_name" = "local" ] && [ "$current_dir_name" = "$name" ]; then
+  # Cloned directly into ~/.local/share/typst/packages/local/<package-name>/
+  ln -sfn . "$version"
+  echo "Typst package '$name' linked: ./$version -> ."
+else
+  # Cloned anywhere else (e.g. ~/projects/<package-name>/)
+  target_dir="${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/$name"
+  mkdir -p "$target_dir"
+  ln -sfn "$PWD" "$target_dir/$version"
+  echo "Typst package '$name' linked: $target_dir/$version -> $PWD"
+fi
