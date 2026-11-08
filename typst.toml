@@ -1,0 +1,14 @@
+[package]
+name = "templates"
+description = "My personal templates for document writing"
+version = "0.4.0"
+compiler = "0.15.1"
+entrypoint = "src/lib.typ"
+authors = ["Minh Nguyen <mini.d.nguyen@gmail.com>"]
+license = "GPL-3.0-or-later"
+repository = "https://codeberg.org/samminhch/Typst-Templates"
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "gallery/thumbnail.png"
