@@ -3,7 +3,12 @@
   title: "Assignment #1",
   author: "John Doe",
   instructor: "Dr. Bob",
-  course: [XX-XXXX: Introduction to Larping]
+  course: [*XX-XXXX:* Introduction to Larping]
 )
 
-#lorem(500)
+#problem(1)[
+  How much is one liter of water?
+  + 1000 millilters
+  + 1 milliliter
+  + 1 gallon
+]

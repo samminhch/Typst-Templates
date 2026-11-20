@@ -244,7 +244,7 @@
   // Set default text styles
   let default-styles = (
     text: text.with(),
-    title: text.with(size: 1.5em, weight: "bold"),
+    title: text.with(size: 1.75em, weight: "bold"),
     page-header: text.with(size: 0.75em),
     heading: text.with(),
 
@@ -262,7 +262,7 @@
 
   set page(
     numbering: "1 of 1",
-    header: block(
+    header: context block(
       width: 100%,
       inset: (bottom: 0.5em),
       stroke: (bottom: 1pt + black),

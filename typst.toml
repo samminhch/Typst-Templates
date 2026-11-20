@@ -1,7 +1,7 @@
 [package]
 name = "templates"
 description = "My personal templates for document writing"
-version = "0.4.0"
+version = "0.4.1"
 compiler = "0.15.1"
 entrypoint = "src/lib.typ"
 authors = ["Minh Nguyen <mini.d.nguyen@gmail.com>"]
